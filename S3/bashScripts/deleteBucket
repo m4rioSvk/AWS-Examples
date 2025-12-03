@@ -1,1 +1,13 @@
 #! /usr/bin/env bash 
+echo "== delete bucket"
+
+#type in console
+#./S3/bashScripts/deleteBucket example-ms-ms33
+
+if [ -z "$1" ]; then
+    echo "No bucket name provided. There needs to be a bucket name ../--bucket my-bucket-name."
+    exit 1
+fi
+
+aws s3api delete-bucket --bucket $1 --region ap-northeast-3 \
+--query Location

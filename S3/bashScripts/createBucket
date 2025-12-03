@@ -1,4 +1,8 @@
 #! /usr/bin/env bash 
+echo "== create bucket"
+
+#type in console
+#./S3/bashScripts/createBucket example-ms-ms33
 
 # check for a bucket name
 if [ -z "$1" ]; then
@@ -8,4 +12,5 @@ fi
 
 
 
-aws s3api create-bucket --bucket $1 --region ap-northeast-3 --create-bucket-configuration LocationConstraint=ap-northeast-3
+aws s3api create-bucket --bucket $1 --region ap-northeast-3 --create-bucket-configuration LocationConstraint=ap-northeast-3 \
+--query Location
