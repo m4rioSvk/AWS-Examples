@@ -1,0 +1,7 @@
+#! /usr/bin/env bash 
+echo "I am listing all your buckets now !"
+
+#bash command
+# 
+
+aws s3 ls

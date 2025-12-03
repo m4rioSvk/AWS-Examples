@@ -1,1 +1,55 @@
 #! /usr/bin/env bash 
+echo "I am syncing your files now !"
+
+#bash command
+# $ ./S3/bashScripts/sync
+
+#exit immediately if any command returns non-zero value
+
+set -e
+
+#check for bucket name
+if [ -z "$1" ]; then
+    echo "No bucket name provided. There needs to be a bucket name."
+    exit 1
+fi
+
+BUCKET_NAME=$1
+
+#check for file name
+if [ -z "$2" ]; then
+    echo "No file name provided. There needs to be a file name."
+    exit 1
+fi
+
+FILENAME_PREFIX=$2
+
+#where we'll store these files
+OUTPUT_DIR="/tmp/s3-bash-scripts"
+
+#remove the folder if it already exists
+rm -r $OUTPUT_DIR
+
+#let's create output folder
+mkdir -p $OUTPUT_DIR
+
+
+
+NUM_FILES=$((RANDOM % 6 + 5)) #random number between 5 to 10
+
+
+for ((i=1; i<=NUM_FILES; i++)); do
+    FILENAME="$OUTPUT_DIR/FILENAME_PREFIX_$i.txt"
+
+    # Create random file with random size between 1 KB and 1024 KB
+    dd if=/dev/urandom of="$FILENAME" bs=1024 count=$((RANDOM % 1024 + 1)) status=none
+
+    echo "Created $FILENAME"
+done
+
+echo "Total files created: $NUM_FILES"
+
+tree $OUTPUT_DIR
+
+aws s3 sync $OUTPUT_DIR s3://$BUCKET_NAME/syncFiles
+
