@@ -1,5 +1,5 @@
 #! /usr/bin/env bash 
-echo "== delete bucket"
+echo "I am deleting your backet !"
 
 #type in console
 #./S3/bashScripts/deleteBucket example-ms-ms33
@@ -9,4 +9,6 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-aws s3api delete-bucket --bucket $1 --region ap-northeast-3 \
+BUCKET_NAME=$1
+
+aws s3api delete-bucket --bucket $BUCKET_NAME --region ap-northeast-3 \
