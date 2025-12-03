@@ -1,1 +1,11 @@
 #! /usr/bin/env bash 
+
+# check for a bucket name
+if [ -z "$1" ]; then
+    echo "No bucket name provided. There needs to be a bucket name ../--bucket my-bucket-name."
+    exit 1
+fi
+
+
+
+aws s3api create-bucket --bucket $1 --region ap-northeast-3 --create-bucket-configuration LocationConstraint=ap-northeast-3
