@@ -2,6 +2,6 @@
 echo "I am listing all your buckets now !"
 
 #bash command
-# 
+#./S3/bashScripts/listBuckets
 
 aws s3 ls

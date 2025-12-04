@@ -2,27 +2,27 @@
 echo "I am syncing your files now !"
 
 #bash command
-# $ ./S3/bashScripts/sync
+# $ ./S3/bashScripts/createFiles
 
 #exit immediately if any command returns non-zero value
 
 set -e
 
-#check for bucket name
-if [ -z "$1" ]; then
-    echo "No bucket name provided. There needs to be a bucket name."
-    exit 1
-fi
+# #check for bucket name
+# if [ -z "$1" ]; then
+#     echo "No bucket name provided. There needs to be a bucket name."
+#     exit 1
+# fi
 
-BUCKET_NAME=$1
+# BUCKET_NAME=$1
 
-#check for file name
-if [ -z "$2" ]; then
-    echo "No file name provided. There needs to be a file name."
-    exit 1
-fi
+# #check for file name
+# if [ -z "$2" ]; then
+#     echo "No file name provided. There needs to be a file name."
+#     exit 1
+# fi
 
-FILENAME_PREFIX=$2
+# FILENAME_PREFIX=$2
 
 #where we'll store these files
 OUTPUT_DIR="./S3/bashScripts/randomFiles"
@@ -50,6 +50,3 @@ done
 echo "Total files created: $NUM_FILES"
 
 tree $OUTPUT_DIR
-
-aws s3 sync $OUTPUT_DIR s3://$BUCKET_NAME/syncFiles
-
