@@ -13,4 +13,8 @@ aws s3api put-object --bucket metadata-fun-ms333 --key hello.txt --metadata Plan
 ## Get metadata through head object
 
 aws s3api head-object --bucket metadata-fun-ms333 --key hello.txt
- 
+
+## Clean up
+
+aws s3 rm s3://metadata-fun-ms333/hello.txt             //removes file
+aws s3 rb s3://metadata-fun-ms333                //removes bucket
