@@ -1,0 +1,4 @@
+aws s3 mb s3://prefixes-fun-ms22
+
+
+aws s3 put-object --bucket prefixes-fun-ms22 --key hello/
