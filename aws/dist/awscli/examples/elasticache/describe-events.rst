@@ -3,7 +3,7 @@
 The following ``describe-events`` example returns a list of events for a replication group. ::
 
     aws elasticache describe-events \
-        -- source-identifier test-cluster \
+        --source-identifier test-cluster \
         --source-type replication-group
 
 

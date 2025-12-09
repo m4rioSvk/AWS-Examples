@@ -29,8 +29,25 @@ aws s3api get-public-access-block \
     --bucket morning-bucket-acls
 ```
 ## Change bucket ownership
-```sh
+
+
 aws s3api put-bucket-ownership-controls \
     --bucket morning-bucket-acls \
-    --ownership-controls="Rules=[{ObjectOwnership=BucketOwnerEnforced}]"
-```
+    --ownership-controls='Rules=[{ObjectOwnership=BucketOwnerPreferred}]'
+
+
+## Suggested fix
+
+aws s3api put-public-access-block \
+    --bucket morning-bucket-acls \
+    --public-access-block-configuration "BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true"
+
+
+aws s3api put-bucket-ownership-controls \
+  --bucket morning-bucket-acls \
+  --ownership-controls '{"Rules":[{"ObjectOwnership":"ObjectWriter"}]}'
+
+## Stage 2
+
+aws s3api put-object-acl --bucket morning-bucket-acls --key myfile.txt --acl public-read
+

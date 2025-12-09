@@ -19,12 +19,21 @@ Output::
                 "Types": [
                     "Software and Configuration Checks/Industry and Regulatory Standards/PCI-DSS"
                 ],
+                "FindingProviderFields": {
+                    "Severity": {
+                        "Original": 0,
+                        "Label": "INFORMATIONAL"
+                    },
+                    "Types": [
+                        "Software and Configuration Checks/Industry and Regulatory Standards/PCI-DSS"
+                    ]
+                },
                 "FirstObservedAt": "2020-06-02T14:02:49.159Z",
                 "LastObservedAt": "2020-06-02T14:02:52.397Z",
                 "CreatedAt": "2020-06-02T14:02:49.159Z",
                 "UpdatedAt": "2020-06-02T14:02:52.397Z",
                 "Severity": {
-                    "Product": 0,
+                    "Original": 0,
                     "Label": "INFORMATIONAL",
                     "Normalized": 0
                 },
@@ -78,7 +87,7 @@ Output::
 
 **Example 2: To return critical-severity findings that have a workflow status of NOTIFIED**
 
-The following ``get-findings`` example returns findings that have a severity label value of CRITICAL and a workflow status of NOTIFIED. The results are sorted in descending order by the value of Confidence.
+The following ``get-findings`` example returns findings that have a severity label value of CRITICAL and a workflow status of NOTIFIED. The results are sorted in descending order by the value of Confidence. ::
 
     aws securityhub get-findings \
         --filters '{"SeverityLabel":[{"Value": "CRITICAL","Comparison":"EQUALS"}],"WorkflowStatus": [{"Value":"NOTIFIED","Comparison":"EQUALS"}]}' \
@@ -98,12 +107,21 @@ Output::
                 "Types": [
                     "Software and Configuration Checks/Industry and Regulatory Standards/CIS AWS Foundations Benchmark"
                 ],
+                "FindingProviderFields" {
+                    "Severity": {
+                        "Original": 90,
+                        "Label": "CRITICAL"
+                    },
+                    "Types": [
+                        "Software and Configuration Checks/Industry and Regulatory Standards/CIS AWS Foundations Benchmark"
+                    ]
+                },
                 "FirstObservedAt": "2020-05-21T20:16:34.752Z",
                 "LastObservedAt": "2020-06-09T08:16:37.171Z",
                 "CreatedAt": "2020-05-21T20:16:34.752Z",
                 "UpdatedAt": "2020-06-09T08:16:36.430Z",
                 "Severity": {
-                    "Product": 90,
+                    "Original": 90,
                     "Label": "CRITICAL",
                     "Normalized": 90
                 },
