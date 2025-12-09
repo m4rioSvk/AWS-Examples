@@ -1,22 +1,36 @@
 ## Create a new bucket
 
+```sh
 aws s3 mb s3://morning-bucket-acls
+```
 
 ## Create a file
 
+```sh
 echo "ACLs testing access rights" > acls.txt
+```
+
 
 ## Upload a file to bucket 
-
+```sh
 aws s3 cp acls.txt s3://morning-bucket-acls
+```
+
 
 ## Turn off public access
-
+```sh
 aws s3api put-public-access-block \
     --bucket morning-bucket-acls \
     --public-access-block-configuration "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=true,RestrictPublicBuckets=true"
-
+```
 ## Check public access
-
+```sh
 aws s3api get-public-access-block \
     --bucket morning-bucket-acls
+```
+## Change bucket ownership
+```sh
+aws s3api put-bucket-ownership-controls \
+    --bucket morning-bucket-acls \
+    --ownership-controls="Rules=[{ObjectOwnership=BucketOwnerEnforced}]"
+```
