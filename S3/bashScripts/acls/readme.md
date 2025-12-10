@@ -51,3 +51,10 @@ aws s3api put-bucket-ownership-controls \
 
 aws s3api put-object-acl --bucket morning-bucket-acls --key myfile.txt --acl public-read
 
+## Add permissions to another account
+
+aws s3api put-bucket-acl 
+--bucket morning-bucket-acls 
+--grant-full-control emailaddress=user1@example.com,emailaddress=user2@example.com 
+--grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AccessControlPolicy xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <Owner>
+    <ID>*** Owner-Canonical-User-ID ***</ID>  ##actual owner
+  </Owner>
+  <AccessControlList>
+    <Grant>
+      <Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+               xsi:type="Canonical User">
+        <ID>*** Owner-Canonical-User-ID ***</ID>    ##who gets the rights
+      </Grantee>
+      <Permission>FULL_CONTROL</Permission>
+    </Grant>
+  </AccessControlList>
+</AccessControlPolicy> 
+
+<!-- for policies the preffered version is in json -->

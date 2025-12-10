@@ -1,0 +1,22 @@
+{
+  "Grants": [
+    {
+      "Grantee": {
+        "DisplayName": "string",
+        "EmailAddress": "string",
+        "ID": "string",
+        "Type": "CanonicalUser"|"AmazonCustomerByEmail"|"Group",
+        "URI": "string"
+      },
+      "Permission": "FULL_CONTROL"|"WRITE"|"WRITE_ACP"|"READ"|"READ_ACP"
+    }
+    ...
+  ],
+  "Owner": {
+    "DisplayName": "string",
+    "ID": "string"
+  }
+}
+
+// once you add the canonycal credentials, you can use the same commands for the buckets in your CLI as it was your bucket
+// -> add object to a NOT YOURS bucket is the same command $ aws s3 cp hello.txt s3://my-bucket and then check $ aws s3 ls s3://my-bucket
