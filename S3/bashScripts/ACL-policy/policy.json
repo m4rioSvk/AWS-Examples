@@ -1,7 +1,7 @@
 {
-  "Grants": [
+"Grants": [
     {
-      "Grantee": {
+     "Grantee": {
         "DisplayName": "string",
         "EmailAddress": "string",
         "ID": "string",
