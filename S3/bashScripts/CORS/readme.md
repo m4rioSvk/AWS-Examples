@@ -14,3 +14,5 @@ minimal CORS config =>
     <AllowedMethod>GET</AllowedMethod>
   </CORSRule>
 </CORSConfiguration>
+
+andrew https://www.youtube.com/watch?v=c3Cn4xYfxJY&t=22784s 8:48:00
