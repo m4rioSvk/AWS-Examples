@@ -15,7 +15,7 @@ Resources:
         Statement:
           - Effect: Allow
             Principal:
-              Service: s3.amazonaws.com
+              # Service: s3.amazonaws.com
               AWS: "arn:aws:iam::794038257497:user/sts-machine-user"
             Action: sts:AssumeRole
       Path: /
@@ -29,5 +29,7 @@ Resources:
                   - s3:GetObject
                   - s3:PutObject
                 Resource:
+                  - !Sub "arn:aws:s3:::*"
                   - !Sub "arn:aws:s3:::${BucketName}"
                   - !Sub "arn:aws:s3:::${BucketName}/*"
+                  
