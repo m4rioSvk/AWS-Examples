@@ -1,2 +1,6 @@
 #! /usr/bin/env bash 
 
+aws s3api put-object \
+    --bucket example-ms-ms555 \
+    --key ./skuska.txt
+    # --body MySampleImage.png

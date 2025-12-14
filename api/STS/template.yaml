@@ -1,28 +1,33 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Create a role for us to Assume and resource we will have access to
-Paramaters:
+Description: Create a role that can be assumed to access an S3 bucket
+
+Parameters:
   BucketName:
     Type: String
-    Default: "sts-fun-ms-22"
-Resources: 
+    Default: sts-fun-ms-22
+
+Resources:
   STSRole:
-    Type: 'AWS::IAM::Role'
+    Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
-        Version: "2012-10-17"		 	 	 
+        Version: "2012-10-17"
         Statement:
           - Effect: Allow
             Principal:
-              Service:
-                - s3.amazonaws.com
-            Action:
-              - 'sts:AssumeRole'
+              Service: s3.amazonaws.com
+              AWS: "arn:aws:iam::794038257497:user/sts-machine-user"
+            Action: sts:AssumeRole
       Path: /
       Policies:
         - PolicyName: s3access
           PolicyDocument:
-            Version: "2012-10-17"		 	 	 
+            Version: "2012-10-17"
             Statement:
               - Effect: Allow
-                Action: '*'    #means allow for all actions
-                Resource: "arn:aws:s3:::${BucketName}"  #in arn format
+                Action:
+                  - s3:GetObject
+                  - s3:PutObject
+                Resource:
+                  - !Sub "arn:aws:s3:::${BucketName}"
+                  - !Sub "arn:aws:s3:::${BucketName}/*"
