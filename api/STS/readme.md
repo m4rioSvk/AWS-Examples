@@ -63,3 +63,15 @@ aws iam put-user-policy \
 ## Update new profile "assume" with the temporary credentials and change to updated assume profile through export AWS_PROFILE=assumed
 
 ## Test if you new profile works
+
+## Delete everything
+$ aws iam delete-access-key --access-key-id AKIA3RYC6I5MUPTAQTHC --user-name sts-machine-user
+
+aws iam update-access-key \
+  --user-name sts-machine-user \
+  --access-key-id ASIA3RYC6I5MRXSVXEYQ \
+  --status Inactive
+
+aws iam get-role --role-name my-sts-stack-fun-STSRole-DnyE8NZgFfOE
+
+aws iam list-access-keys --user-name USERNAME
