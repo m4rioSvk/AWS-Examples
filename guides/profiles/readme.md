@@ -38,3 +38,7 @@ aws configure set region "$AWS_DEFAULT_REGION" --profile codespaces-new
 ## Check profile credentials 
 
 aws sts get-caller-identity --profile codespaces-new --output json
+
+## Get permissions 
+
+aws iam get-user --profile codespaces-new

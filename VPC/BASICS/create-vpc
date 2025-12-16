@@ -1,5 +1,7 @@
 #! /usr/bin/env bash 
 
+set -e
+
 VPC_ID=$(aws ec2 create-vpc \
 --cidr-block "172.1.0.0/16" \
 --region ap-northeast-3 \
