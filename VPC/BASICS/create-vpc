@@ -6,7 +6,7 @@ VPC_ID=$(aws ec2 create-vpc \
 --cidr-block "172.1.0.0/16" \
 --region ap-northeast-3 \
 --tag-specifications 'ResourceType=vpc,Tags=[{Key=Name,Value=my-vpc3}]' \
---output json \
+--output text \
 --query Vpc.VpcId)
 
 echo "VPC ID: $VPC_ID"
@@ -18,4 +18,20 @@ IGW_ID=$(aws ec2 create-internet-gateway \
 
 echo "IGW ID : $IGW_ID"
 
-aws ec2 attach-internet-gateway --internet-gateway-id igw-0adfd1e665f40a97c --vpc-id vpc-07bef0696f073010c
+aws ec2 attach-internet-gateway \
+--internet-gateway-id "$IGW_ID" \
+--vpc-id "$VPC_ID"
+
+SUBNET_ID=$(aws ec2 create-subnet \
+--vpc-id $VPC_ID \
+--cidr-block 172.1.0.0/20 \
+--query Subnet.SubnetId \
+--output text
+)
+
+echo $SUBNET_ID
+
+aws ec2 associate-route-table \
+--route-table-id rtb-22574640 \
+--subnet-id "$SUBNET_ID"
+
