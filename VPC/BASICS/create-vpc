@@ -1,6 +1,5 @@
 #! /usr/bin/env bash 
 
-
 VPC_ID=$(aws ec2 create-vpc \
 --cidr-block "172.1.0.0/16" \
 --region ap-northeast-3 \
@@ -8,4 +7,11 @@ VPC_ID=$(aws ec2 create-vpc \
 --output json \
 --query Vpc.VpcId)
 
-echo $VPC_ID
+echo "VPC ID: $VPC_ID"
+
+IGW_ID=$(aws ec2 create-internet-gateway \
+--query InternetGateway.InternetGateway.Id \
+--output text
+)
+
+echo "IGW ID : $IGW_ID"

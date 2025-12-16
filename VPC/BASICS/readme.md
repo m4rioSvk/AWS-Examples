@@ -15,8 +15,14 @@ aws ec2 create-vpc \
 ## Create Internet GAteway IGW
 
 
+aws ec2 create-internet-gateway \
+--query InternetGateway.InternetGateway.Id \
+--output text
+
+
 ## Attach IGW
 
+aws ec2 attach-internet-gateway --internet-gateway-id $IGW_ID --vpc-id $VPC_ID
 
 ## Create a new subnet
 
