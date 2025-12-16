@@ -29,13 +29,19 @@ aws ec2 attach-internet-gateway --internet-gateway-id $IGW_ID --vpc-id $VPC_ID
 aws ec2 create-subnet --vpc-id $VPC_ID --cidr-block 172.1.0.0/20
 
 ## Find a default route table through query
+aws ec2 describe-route-tables --output table
+echo "VPC_ID=[$VPC_ID]"
 
 aws ec2 describe-route-tables \
---route-table-ids 
+--filters "Name=vpc-id,Values=$VPC_ID" "Name=association.main,Values=true" \
+--output text
+
+
+echo "RT_ID: $RT_ID"
 
 ## Explicitily associate subnets
 
-aws ec2 associate-route-table --route-table-id rtb-22574640 --subnet-id subnet-9d4a7b6c
+aws ec2 associate-route-table --route-table-id $RT_ID$ --subnet-id $SUBNET_ID
 
 
 ## Add a route for our Route Table to our IGW
