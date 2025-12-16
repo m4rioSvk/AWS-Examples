@@ -31,9 +31,7 @@ aws ec2 create-subnet --vpc-id $VPC_ID --cidr-block 172.1.0.0/20
 ## Find a default route table through query
 
 aws ec2 describe-route-tables \
---filters "Name=vpc-id,Values=$VPC_ID" \
---query "RouteTables[?Associations[?Main==\`true\`]].RouteTableId" \
---output text
+--route-table-ids 
 
 ## Explicitily associate subnets
 
