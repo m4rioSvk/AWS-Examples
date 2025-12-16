@@ -12,7 +12,7 @@ VPC_ID=$(aws ec2 create-vpc \
 echo "VPC ID: $VPC_ID"
 
 IGW_ID=$(aws ec2 create-internet-gateway \
---query InternetGateway.InternetGateway.Id \
+--query InternetGateway.InternetGatewayId \
 --output text
 )
 
