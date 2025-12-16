@@ -17,3 +17,5 @@ IGW_ID=$(aws ec2 create-internet-gateway \
 )
 
 echo "IGW ID : $IGW_ID"
+
+aws ec2 attach-internet-gateway --internet-gateway-id igw-0adfd1e665f40a97c --vpc-id vpc-07bef0696f073010c
