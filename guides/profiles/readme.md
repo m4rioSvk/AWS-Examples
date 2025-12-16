@@ -28,3 +28,13 @@ AWS_DEFAULT_OUTPUT=json
 
 export AWS_CLI_AUTO_PROMPT=on-partial
 aws --cli-auto-prompt
+
+## Update new profile with using Codespaces secret from the website
+
+aws configure set aws_access_key_id "$AWS_ACCESS_KEY_ID" --profile codespaces-new
+aws configure set aws_secret_access_key "$AWS_SECRET_ACCESS_KEY" --profile codespaces-new
+aws configure set region "$AWS_DEFAULT_REGION" --profile codespaces-new
+
+## Check profile credentials 
+
+aws sts get-caller-identity --profile codespaces-new --output json
