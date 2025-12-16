@@ -34,6 +34,7 @@ echo "SUBNET_ID: $SUBNET_ID"
 
 RT_ID=$(aws ec2 describe-route-tables \
 --filters "Name=vpc-id,Values=$VPC_ID" "Name=association.main,Values=true" \
+--query "RouteTables[].RouteTableId[]" \
 --output text
 )
 
