@@ -18,3 +18,16 @@ fi
 #delete vpc
 
 aws ec2 delete-vpc --vpc-id $VPC_ID
+
+#from Andrew's YouTube
+
+aws ec2 delete-security-group
+aws ec2 delete-network-acl
+aws ec2 delete-subnet
+aws ec2 delete-route-table
+
+aws ec2 detach-internet-gateway
+aws ec2 delete-internet-gateway
+aws ec2 delete-egress-only-internet-gateway
+
+aws ec2 delete-vpc --vpc-id $VPC_ID
