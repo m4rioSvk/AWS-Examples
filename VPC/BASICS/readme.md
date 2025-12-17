@@ -11,6 +11,10 @@ aws ec2 create-vpc \
 --output json \
 --query Vpc.VpcId
 
+## Create default VPC if accidentaly deleted
+
+aws ec2 create-default-vpc --region
+
 
 ## Create Internet GAteway IGW
 
