@@ -19,6 +19,7 @@ fi
 
 aws ec2 delete-vpc --vpc-id $VPC_ID
 
+
 #from Andrew's YouTube
 
 aws ec2 delete-security-group
@@ -31,3 +32,4 @@ aws ec2 delete-internet-gateway
 aws ec2 delete-egress-only-internet-gateway
 
 aws ec2 delete-vpc --vpc-id $VPC_ID
+
