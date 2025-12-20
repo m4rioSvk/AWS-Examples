@@ -4,3 +4,13 @@ aws s3api put-object \
     --bucket example-ms-ms555 \
     --key ./skuska.txt
     # --body MySampleImage.png
+
+
+    aws s3api put-object \
+  --bucket encryption2-ms-333 \
+  --key VPC/ROLES/ec2role.json \
+  --body ./ec2role.json
+
+  aws iam create-role \
+  --role-name EC2SSMRole \
+  --assume-role-policy-document s3://ec2-trust-policy.json
