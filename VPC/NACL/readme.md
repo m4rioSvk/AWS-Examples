@@ -19,6 +19,55 @@ VPC_ID=vpc-02e856b237501a67f/ project-NACLS-vpc
 aws ec2 create-network-acl --vpc-id vpc-02e856b237501a67f
 ```
 
+## Set up created NACLS
+myIPv4 = 123.48.34.98
+
+## MUST BLOCK INBOUND AND OUTBOUND TRAFFIC SEPPARATELY
+
+
+```sh
+aws ec2 create-network-acl-entry \
+--network-acl-id acl-0095fd7779f125037 \
+--rule-number 90 \
+--protocol -1 \
+--rule-action deny \
+--ingress \
+--cidr-block 123.48.34.98/32
+```
+
+  ## /32 means SINGLE IP only !!
+
+## Outbound = egress true
+aws ec2 create-network-acl-entry \
+  --network-acl-id acl-0095fd7779f125037 \
+  --rule-number 90 \
+  --protocol -1 \
+  --rule-action deny \
+  --egress true \
+  --cidr-block 123.48.34.98/32
+
+
+## Verify
+
+aws ec2 describe-network-acls \
+  --network-acl-ids acl-0095fd7779f125037 \
+  --output table
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### EC2 SECTION ### EC2 SECTION
 ## Get AMI for Amazon Linux 2
 Amazon Linux 2 AMI (HVM), SSD Volume Type (64-bit x86) Operating System
 AWS SSM public AMI parameters always reference Amazon-owned images.
