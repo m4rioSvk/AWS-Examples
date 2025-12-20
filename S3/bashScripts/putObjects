@@ -13,4 +13,4 @@ aws s3api put-object \
 
   aws iam create-role \
   --role-name EC2SSMRole \
-  --assume-role-policy-document s3://ec2-trust-policy.json
+  --assume-role-policy-document file://ec2role.json
