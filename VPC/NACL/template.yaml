@@ -14,9 +14,15 @@ Parameters:
     Type: String
     Default: subnet-0186bd71d3b1d537d
 Resources:
+  EC2InstanceProfile:
+    Type: AWS::IAM:EC2InstanceProfile
+    Properties:
+      Roles:
+        - AmazonSSMManagedInstanceCore
   MyEC2Instance:
     Type: AWS::EC2::Instance
     Properties:
+      IamInstanceProfile: !Ref EC2InstanceProfile
       InstanceType: !Ref InstanceType
       ImageId: !Ref ImageId
       SubnetId: !Ref SubnetId
