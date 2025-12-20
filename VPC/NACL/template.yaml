@@ -1,13 +1,13 @@
-AWSTemplateFormetVersion: "2010-09-09"
+AWSTemplateFormatVersion: '2010-09-09'
 Description: Lunch a simple EC2 for use with testing VPCs
 Parameters:
-  InstanceType: 
-    Type: String 
-    Default: t2.micro 
-  VpcId: 
+  InstanceType:
+    Type: String
+    Default: t3.micro
+  VpcId:
     Type: String
     Default: vpc-02e856b237501a67f
-  ImageID:
+  ImageId:
     Type: String
     Default: ami-0c719c0233cf2bb04
   SubnetId:
@@ -15,14 +15,14 @@ Parameters:
     Default: subnet-0186bd71d3b1d537d
 Resources:
   MyEC2Instance:
-    Type: AWS::EC2::MyEC2Instance 
+    Type: AWS::EC2::Instance
     Properties:
-      InstanceType: !Ref InstanceType 
+      InstanceType: !Ref InstanceType
       ImageId: !Ref ImageId
       SubnetId: !Ref SubnetId
-  SecurityGroupIds:
-    - !GetAtt SG.GroupId
-SG: 
+      SecurityGroupIds:
+      - !GetAtt SG.GroupId
+  SG:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupDescription: Allow SSH
