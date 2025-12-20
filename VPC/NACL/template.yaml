@@ -14,11 +14,23 @@ Parameters:
     Type: String
     Default: subnet-0186bd71d3b1d537d
 Resources:
+  SSMRole:
+    Type: AWS::IAM::Role
+    Propertes: 
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement: 
+          - Effect: Allow
+            Principal: 
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
   EC2InstanceProfile:
     Type: AWS::IAM::InstanceProfile
     Properties:
       Roles:
-        - EC2SSMRole
+        -!Ref SSMRole
   MyEC2Instance:
     Type: AWS::EC2::Instance
     Properties:
