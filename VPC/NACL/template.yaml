@@ -16,7 +16,7 @@ Parameters:
 Resources:
   SSMRole:
     Type: AWS::IAM::Role
-    Propertes: 
+    Properties: 
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement: 
@@ -29,8 +29,8 @@ Resources:
   EC2InstanceProfile:
     Type: AWS::IAM::InstanceProfile
     Properties:
-      Roles:
-        -!Ref SSMRole
+      Roles: 
+        - !Ref SSMRole
   MyEC2Instance:
     Type: AWS::EC2::Instance
     Properties:
@@ -40,6 +40,14 @@ Resources:
       SubnetId: !Ref SubnetId
       SecurityGroupIds:
       - !GetAtt SG.GroupId
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash
+          yum update -y
+          yum install -y httpd
+          systemctl start httpd
+          systemctl enable httpd
+          echo "<html><body><h1>Apache is running on EC2</h1></body></html>" > /var/www/html/index.html
   SG:
     Type: AWS::EC2::SecurityGroup
     Properties:
