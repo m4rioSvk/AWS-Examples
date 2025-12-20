@@ -1,0 +1,13 @@
+AWSTemplateFormetVersion: "2010-09-09"
+Description: Lunch a simple EC2 for use with testing VPCs
+Parameters:
+  ImageID:
+    Default: ami-0c719c0233cf2bb04
+  SubnetId:
+    Default: subnet-0186bd71d3b1d537d
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::MyEC2Instance 
+    Properties:
+      ImageId: !Ref ImageId
+      SubnetId: !Ref SubnetId

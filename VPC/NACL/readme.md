@@ -16,5 +16,16 @@ aws ec2 describe-vpcs \
 VPC_ID=vpc-02e856b237501a67f/ project-NACLS-vpc
 
 ```sh
-aws ec2 create-network-acl --vpc-id $VPC_ID project-NACLS-vpc
+aws ec2 create-network-acl --vpc-id vpc-02e856b237501a67f
 ```
+
+## Get AMI for Amazon Linux 2
+Amazon Linux 2 AMI (HVM), SSD Volume Type (64-bit x86) Operating System
+AWS SSM public AMI parameters always reference Amazon-owned images.
+This command is to grab the latest AMI image.
+
+$ aws ssm get-parameter \
+  --region ap-northeast-3 \
+  --name /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2 \
+  --query Parameter.Value \
+  --output text
