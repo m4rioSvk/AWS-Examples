@@ -3,7 +3,7 @@ Resources:
   MyUser: 
     Type: AWS::IAM::User
     Properties:
-      UserName: 'my-cool-user'
+      #UserName: 'my-cool-user'
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/ReadOnlyAccess
       Policies:
