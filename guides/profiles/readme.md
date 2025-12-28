@@ -4,6 +4,10 @@ aws configure
 
 ## two files config or credentials
 
+## Change profile
+export AWS_PROFILE=dev
+echo "Current AWS profile: $AWS_PROFILE"
+
 ## Set up a region
 
 aws configure set region us-west-2 --profile studentMario
