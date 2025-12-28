@@ -9,3 +9,37 @@ Resources:
       Policies:
         - PolicyName: MyCoolPolicy
         - PolicyDocument: 
+            Version: 2012-10-17
+            Statement:
+              - Sid: IamListAccess
+                Effect: Allow
+                Action: 
+                - 'iam:ListRoles'
+                - 'iam:ListUsers'
+                Resource: '*' 
+
+  MyInlinePolicy:
+    Type: 'AWS::IAM::Policy'
+    Properties:
+      PolicyName: MyInlinePolicyMario
+      PolicyDocument:
+        Version: "2012-10-17"		 	 	 
+        Statement:
+        - Effect: Allow
+          Action: '*'
+          Resource: '*'
+      Users:
+      - !Ref MyUser
+  MySecondInlinePolicy:
+    Type: 'AWS::IAM::Policy'
+    Properties:
+      PolicyName: MySecondInlinePolicyMario
+      PolicyDocument:
+        Version: "2012-10-17"		 	 	 
+        Statement:
+        - Effect: Allow
+          Action: 's3:*'
+          Resource: '*'
+      Users:
+      - !Ref MyUser
+
