@@ -1,0 +1,11 @@
+Resources:
+  # https://docs.aws.amazon.com/cli/latest/reference/quicksight/list-iam-policy-assignments.html
+  MyUser: 
+    Type: AWS::IAM::User
+    Properties:
+      UserName: 'my-cool-user'
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/ReadOnlyAccess
+      Policies:
+        - PolicyName: MyCoolPolicy
+        - PolicyDocument: 
