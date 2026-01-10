@@ -3,7 +3,7 @@
 This repository documents my hands-on learning journey with **Amazon Web Services (AWS)**.  
 It contains notes, diagrams, scripts, and practical exercises created while preparing for AWS certifications and building real-world cloud skills.
 
-The goal of this repo is **learning by doing**, not just theory.
+The goal of this repo is **creating my personal re-usable scripts :-) **.
 
 ---
 
