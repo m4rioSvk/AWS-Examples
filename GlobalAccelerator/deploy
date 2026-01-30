@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+echo "== deploy global accelerator"
+
+STACK_NAME="aws-globalacc-basics"
+
+aws cloudformation deploy \
+--template-file template.yaml \
+--capabilities CAPABILITY_NAMED_IAM \
+--no-execute-changeset \
+--region ap-northeast-3 \
+--stack-name $STACK_NAME
