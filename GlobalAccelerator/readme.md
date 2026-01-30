@@ -2,6 +2,8 @@ Innitialization of Global Accelerator services for AWS
 
 Standard / Customized routing
 
+<!-- https://docs.aws.amazon.com/cli/latest/reference/globalaccelerator/create-accelerator.html -->
+
 aws globalaccelerator create-accelerator \
     --name ExampleAccelerator \
     --tags Key="Name",Value="Example Name" Key="Project",Value="Example Project" \
